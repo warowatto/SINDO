@@ -65,14 +65,6 @@
         <!-- inner -->
       </div>
       <!-- order -->
-
-      <div id="status-bar">
-        <ul class="status-list">
-          <li>인터넷</li>
-          <li>터치</li>
-        </ul>
-        <div class="time">10:10</div>
-      </div>
     </div>
 
     <b-modal
@@ -209,10 +201,10 @@ export default {
       }).join('&');
 
       const commend = `[q B T${numeral(amount).format('000000')}&${requestData}]`;
-      // this.serialport.write(commend);
+      this.serialport.write(commend);
 
-      const returnPrice = Number(8000) - Number(this.total);
-      this.$router.push({ name: 'finish', params: { products: this.$route.params.products, payType: 'cash', returnPrice } });
+      // const returnPrice = Number(10000) - Number(this.total);
+      // this.$router.push({ name: 'finish', params: { products: this.$route.params.products, payType: 'cash', returnPrice } });
     },
   },
 };

@@ -39,7 +39,7 @@
               >
                 <dl :class="{ no: product.max === 0 }">
                   <dt>
-                    <img :src="product.image" />
+                    <img src="@/assets/img/p01.png" />
                     <span class="number">{{ product.max | numeral('0,0') }}</span>
                   </dt>
                   <dd>{{ product.price | numeral('0,0') }}원</dd>
@@ -115,7 +115,7 @@ export default {
   async mounted() {
     this.selectedMachine = this.machines[0];
 
-    // if (await !this.deviceConnectState()) return;
+    if (await !this.deviceConnectState()) return;
     const { data } = await this.healthCheck();
     const findMachines = chain(data)
       .groupBy('machine')
@@ -127,7 +127,7 @@ export default {
             return {
               id: Product,
               name: '사이다',
-              image: 'img/p01.png',
+              image: '@/assets/img/p01.png',
               max: productStock,
               price: 1000,
             };
@@ -177,10 +177,10 @@ export default {
 
     // 장치 healthCheck
     async healthCheck() {
-      // this.serialport.wirte('[q A X]');
+      this.serialport.wirte('[q A X]');
 
-      // return await this.serialport.messageEvent.pipe(take(1)).toPromise();
-      return this.parser.parse('[r A Q001/R001/S010&Q001/R002/S010&Q002/R001/S005]');
+      return await this.serialport.messageEvent.pipe(take(1)).toPromise();
+      // return this.parser.parse('[r A Q001/R001/S010&Q001/R002/S010&Q002/R001/S005]');
     },
 
     removeBucketProduct(index) {
