@@ -16,7 +16,7 @@
     "bootstrap-vue": "^2.0.0-rc.19",
     "core-js": "^2.6.5",
     "hashmap": "^2.3.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "numeral": "^2.0.6",
     "rxjs": "^6.5.3",
